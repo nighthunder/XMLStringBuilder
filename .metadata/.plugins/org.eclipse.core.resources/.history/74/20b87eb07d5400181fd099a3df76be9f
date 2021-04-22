@@ -1,0 +1,5 @@
+package xml.string.builder;
+
+public class XMLSolrStringBuilder {
+
+}
