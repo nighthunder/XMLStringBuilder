@@ -1,0 +1,4 @@
+/*  What this package is about */
+
+It's a xml reader and builder following the Solr pattern.
+It's was originated to write a specific XML in the pattern needed by this tool.

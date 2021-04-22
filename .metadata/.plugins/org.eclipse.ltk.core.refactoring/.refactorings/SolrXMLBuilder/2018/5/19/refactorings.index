@@ -1,0 +1,6 @@
+1525972368339	Move compilation unit
+1525973067405	Rename type 'XMLReader'
+1525974830873	Rename package 'XMLBuilder'
+1525975944404	Rename type 'XMLSolrStringBuilder'
+1525975999069	Rename package 'xml.string.builder'
+1525976016356	Rename package 'xml.file.reader'

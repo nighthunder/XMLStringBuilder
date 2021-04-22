@@ -1,0 +1,74 @@
+package maya.xml.string.builder;
+
+import java.io.File;
+ 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+ 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+ 
+/**
+ * @author Crunchify.com
+ */
+ 
+public class CrunchifyCreateXMLDOM {
+ 
+    public static void main(String[] args) {
+        DocumentBuilderFactory icFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder icBuilder;
+        try {
+            icBuilder = icFactory.newDocumentBuilder();
+            Document doc = icBuilder.newDocument();
+            Element mainRootElement = doc.createElement("add");
+            doc.appendChild(mainRootElement);
+            
+            Element docElem = doc.createElement("doc");
+            mainRootElement.appendChild(docElem);
+ 
+            // append child elements to root element
+            mainRootElement.appendChild(getDoc(doc, "1", "Paypal", "Payment"));
+//            docElem.appendChild(getField(doc, "2", "eBay", "Shopping", "2000"));
+//            docElem.appendChild(getField(doc, "3", "Google", "Search", "3000"));
+ 
+            // output DOM XML to console 
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty(OutputKeys.ENCODING, "ISO-8859-1");
+            DOMSource source = new DOMSource(doc);
+            StreamResult console = new StreamResult(System.out);
+            transformer.transform(source, console);
+ 
+            System.out.println("\nXML DOM Created Successfully..");
+ 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+ 
+    private static Node getDoc(Document doc, String id, String date, String text) {
+    	Element docElem = doc.createElement("doc");
+        docElem.appendChild(getFieldElement(doc, "id", id));
+        docElem.appendChild(getFieldElement(doc, "date", date));
+        docElem.appendChild(getFieldElement(doc, "text", text));
+        return docElem;
+    }
+ 
+    // utility method to create text node
+    private static Node getFieldElement(Document doc, Element name, String name, String value) {
+        Element node = doc.createElement(name);
+        Element field = doc.createElement("field");
+        field.setAttribute("id", id);
+        field.setAttribute("date", date);
+        field
+        field.set
+        node.appendChild(doc.createTextNode(value));
+        return node;
+    }
+}
